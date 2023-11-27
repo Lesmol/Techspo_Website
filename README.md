@@ -19,4 +19,3 @@ FOR POTENTIAL ATTENDEES:
 
 The web app is also the registration point for people who want to attend the event. Potential attendees can register for the free event by picking a voucher they want, registering and downloading the ticket. When registering, their credentials are saved onto the database, in the case they forget to download their ticket, they will still be able to attend with their username and email.
 
-![68EDCAE9-E66A-420A-B9DC-E4F370AE0F24_1_106_c](https://github.com/Lesmol/Techspo_Website/assets/108514271/8e391dbb-8b49-4a22-9d0f-000a1c3394f2)
