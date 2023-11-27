@@ -18,5 +18,3 @@ The web app is meant to give attendees all the relevant information regarding sp
 FOR POTENTIAL ATTENDEES:
 
 The web app is also the registration point for people who want to attend the event. Potential attendees can register for the free event by picking a voucher they want, registering and downloading the ticket. When registering, their credentials are saved onto the database, in the case they forget to download their ticket, they will still be able to attend with their username and email.
-
-[<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/7d076d08286b4b17968039806b3fb640?sid=eb617adb-c905-4646-9d6d-b333531f4746" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>](url)
