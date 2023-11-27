@@ -1,0 +1,84 @@
+﻿:root {
+    --gray: #5E5E5E;
+    --purple: #6007D0;
+    --dark-purple: #43088F;
+    --light-purple: #9E54FA;
+    --light-background-purple: #EFE8FF;
+    --dark-text-purple: #210066;
+    --light-text-purple: #BA99FF;
+    --border-purple: #9F83DC;
+}
+
+main {
+    width: 100%;
+}
+
+body {
+    font-family: 'Inter';
+    color: var(--dark-text-purple);
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 2vh;
+}
+
+.review-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 8px 8px 0 0;
+    overflow: hidden;
+    font-size: 0.9em;
+    box-shadow: 0 0 20px var(--light-background-purple)
+}
+
+.review-table thead tr {
+    font-size: 22px;
+    background-color: var(--dark-purple);
+    color: white;
+    text-align: left;
+    font-weight: bold;
+}
+
+.review-table th, .review-table td {
+    padding: 12px 15px;
+}
+
+.review-table tbody tr:nth-of-type(even) {
+    background-color: var(--light-background-purple);
+}
+
+.review-table tbody tr:last-of-type {
+    border-bottom: 2px solid var(--dark-purple)
+}
+
+#moreButton {
+    width: 100%;
+    border: 1px solid var(--light-purple);
+    background-color: white;
+    color: var(--light-purple);
+    font-size: 18px;
+    padding: 12px 26px;
+    transition: .15s ease-in-out;
+}
+
+#moreButton:hover {
+    background-color: var(--light-purple);
+    color: white
+}
+
+.container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    margin-top: 2vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+@media (min-width: 900px) {
+    .review-table th, .review-table td {
+        padding: 1.5%;
+    }
+}

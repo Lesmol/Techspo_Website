@@ -1,0 +1,156 @@
+﻿:root {
+    --purple: #6007D0;
+    --dark-purple: #43088F;
+    --light-purple: #9E54FA;
+}
+
+body {
+    font-family: 'Inter';
+    padding: 0 2%;
+}
+
+li {
+    list-style: none;
+}
+
+.navbar {
+    height: 70px;
+    width: 100%;
+    max-width: 1700px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-menu, .nav-menu2 {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-brand img{
+    width: 100%;
+    max-width: 350px;
+}
+
+.nav-branding {
+    font-size: 2rem;
+}
+/* transition for links */
+.nav-link {
+    color: black;
+    text-decoration: none;
+    transition: text-decoration .9s ease;
+}
+
+    .nav-link:hover {
+        text-decoration: underline;
+    }
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.bar {
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background: black;
+}
+
+.nav-item {
+    padding: 0 1.5rem;
+}
+
+.register-btn {
+    padding: .5rem 2.75rem;
+    background-color: var(--purple);
+    border-radius: 8px;
+    color: white;
+    font-weight: 700;
+    transition: .25s ease;
+}
+
+    .register-btn:hover {
+        text-decoration: none;
+        color: var(--light-purple);
+        background-color: var(--dark-purple);
+    }
+
+
+@media(max-width: 950px) {
+    .bar {
+        display: block;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .hamburger.active {
+        margin-left: 10px;
+    }
+
+        .hamburger.active .bar:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active .bar:nth-child(1) {
+            transform: rotate(45deg) translateY(11.5px);
+        }
+
+        .hamburger.active .bar:nth-child(3) {
+            transform: rotate(-45deg) translateY(-11.5px);
+        }
+
+
+    .nav-menu, .nav-menu2 {
+        position: fixed;
+        right: -200%;
+        top: 70px;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        background: white;
+        transition: 0.3s;
+    }
+
+    .nav-menu2 {
+        top: 334px;
+        background: var(--purple);
+    }
+
+    .nav-item {
+        padding: 1.5rem 0;
+    }
+
+    .nav-menu.active, .nav-menu2.active {
+        z-index: 2;
+        right: 0;
+    }
+
+    .inactive-btn {
+        background-color: grey;
+    }
+}
+
+@media (max-width: 767px) {
+    .inactive-btn {
+        background-color: grey;
+    }
+
+    .nav-menu2 {
+        top: 304px;
+    }
+}
+
+@media (max-width: 555px) {
+    .navbar-brand img {
+        width: 100%;
+        max-width: 250px;
+    }
+}
+
+

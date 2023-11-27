@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Work_Integrated_Learning</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/index.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Work_Integrated_Learning.styles.css" asp-append-version="true" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><img src="~/Assets/SVG/LOGO.svg"></a>
+            <ul class="nav-menu">
+                @if (DateTime.Now.Date <= new DateTime(2023, 11, 5).Date)
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Upcoming">upcoming sessions</a>
+                    </li>
+                }
+                else
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Upcoming">sessions recap</a>
+                    </li>
+                }
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Vouchers">vouchers</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Reviews">reviews</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Socials">socials</a>
+                </li>
+            </ul>
+            <ul class="nav-menu2">
+                <li class="nav-item">
+                    <a class="nav-link register-btn" asp-area="" asp-controller="Home" asp-action="Vouchers">GET TICKETS</a>
+                </li>
+            </ul>
+
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+    
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <script>
+        // Get the current date
+        var currentDate = new Date();
+
+        // Set the date you want to disable the link (October 29th)
+        var disableDate = new Date('2023-11-6');
+
+        // Compare the current date with the disable date
+        if (currentDate >= disableDate) {
+            // If the current date is after October 29th, disable the link
+            var getTicketsLink = document.querySelector('.register-btn');
+            var navMenu2 = document.querySelector('.nav-menu2');
+
+            // If the current date is after the inactive date, disable the button
+            navMenu2.classList.add('inactive-btn');
+
+            getTicketsLink.style.color = '#f2f2f2'; // Change text color to gray
+            getTicketsLink.style.backgroundColor = 'gray'; // Change text color to gray
+            getTicketsLink.style.pointerEvents = 'none'; // Disable link functionality
+        }
+    </script>
+
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

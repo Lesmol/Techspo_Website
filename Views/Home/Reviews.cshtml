@@ -1,0 +1,86 @@
+﻿@using System.Collections.Generic
+@model IEnumerable<Reviews>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My MVC App</title>
+    <link rel="stylesheet" href="~/css/reviews.css" asp-append-version="true" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+</head>
+<body>
+
+    <div class="container">
+        <div class="table-1">
+            <table class="review-table">
+                <thead>
+                    <tr>
+                        <th>
+                            Reviewer Name
+                        </th>
+                        <th>
+                            Review
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var obj in Model.Take(10))
+                    {
+                        <tr>
+                            <td>@obj.ReviewerName</td>
+                            <td>@obj.ReviewMessage</td>
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+            <button id="moreButton">More</button>
+        </div>
+        
+        <div class="table-2">
+            <table class="review-table">
+                <thead>
+                    <tr>
+                        <th>
+                            Reviewer Name
+                        </th>
+                        <th>
+                            Review
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var obj in Model)
+                    {
+                        <tr>
+                            <td>@obj.ReviewerName</td>
+                            <td>@obj.ReviewMessage</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        var table1 = document.querySelector('.table-1');
+        var table2 = document.querySelector('.table-2');
+        var moreButton = document.getElementById('moreButton');
+
+        table2.style.display = 'none';
+
+        moreButton.addEventListener('click', function () {
+            table1.style.display = table1.style.display === 'none' ? 'block' : 'none';
+            table2.style.display = table2.style.display === 'none' ? 'block' : 'none';
+            moreButton.style.display = table2.style.display === 'none' ? 'block' : 'none';
+        });
+    </script>
+
+</body>
+</html>
+

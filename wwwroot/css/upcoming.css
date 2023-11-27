@@ -1,0 +1,200 @@
+﻿:root {
+    --gray: #5E5E5E;
+    --purple: #6007D0;
+    --dark-purple: #43088F;
+    --light-purple: #9E54FA;
+    --light-background-purple: #EFE8FF;
+    --dark-text-purple: #210066;
+    --light-text-purple: #BA99FF;
+    --border-purple: #9F83DC;
+}
+
+main {
+    width: 100%;
+}
+
+span {
+    color: var(--light-purple);
+    text-transform: capitalize;
+}
+
+body {
+    font-family: 'Inter';
+}
+
+a {
+    text-decoration: none;
+}
+
+h1 {
+    font-size: 3rem;
+    font-weight: 800;
+}
+
+h3 {
+    text-decoration: underline;
+}
+
+.text-center {
+    justify-content: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 1670px;
+    margin: 0 auto;
+    padding-top: 3vh;
+}
+
+.live-today {
+    width: 100%;
+    max-width: 860px;
+    border: solid 2px black;
+    border-radius: 8px;
+    margin: 0 auto;
+}
+
+.today-heading {
+    padding: .5% 2%;
+    background-color: var(--purple);
+    border-bottom: solid 2px black;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.today-heading h1 {
+    color: white;
+}
+
+.today-content-spacing {
+    margin: 4% 8%;
+}
+
+.no-spacing {
+    margin: 0;
+    padding: 3px 0;
+}
+
+.star {
+    margin-right: 14px;
+}
+
+.row {
+    display: flex;
+}
+
+.row-space-between {
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 450px;
+}
+
+.medium-heading {
+    margin-top: 3vh;
+    font-size: 1.55rem;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.sub-text {
+    padding: 8px 0;
+    color: var(--gray);
+}
+
+
+.image {
+    border-radius: 20px;
+    width: 100%;
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+.side-info {
+    margin: 0 auto;
+    margin-top: 2.5rem;
+    border-radius: 8px;
+    width: auto;
+    max-width: 500px;
+    background-color: var(--light-background-purple);
+    color: var(--dark-text-purple);
+    padding: 16px;
+}
+
+.side-info p {
+    color: var(--light-text-purple);
+}
+
+.sessions {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+    margin-bottom: 12px;
+    border: 1px solid var(--border-purple);
+    padding: 1% 4%;
+}
+
+
+.side-title {
+    margin: 0 auto;
+}
+
+.more-btn {
+    font-weight: 600;
+    color: var(--purple);
+    border: 2px solid var(--purple);
+    padding: 4px 12px;
+    transition: .15s ease;
+}
+
+    .more-btn:hover {
+        color: white;
+        background-color: var(--purple);
+    }
+
+.upcoming-sessions {
+    justify-content: center;
+}
+
+
+.swiper-slide {
+    background: #fff;
+}
+
+@media (min-width: 1300px) {
+    .live-today {
+        margin: 0;
+        max-width: 890px;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .side-info {
+        margin: 0;
+        margin-right: 58px;
+        padding: 1% 0;
+        border-radius: 8px;
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .sessions {
+        margin: 0 auto;
+        margin-bottom: 8px;
+    }
+
+    .side-title {
+        margin: 0 12px;
+    }
+
+    .medium-heading {
+        font-size: 1.75rem;
+        font-weight: 600;
+    }
+}

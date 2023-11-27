@@ -1,0 +1,188 @@
+﻿@using Work_Integrated_Learning.Controllers;
+@model IndexViewModel
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My MVC App</title>
+    <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="live-now">
+
+            @{
+                DateTime currentDate = DateTime.Now;
+                DateTime dayOne = new DateTime(2023, 11, 4);
+                DateTime dayTwo = new DateTime(2023, 11, 5);
+
+                Presenters currentPresenter = Model.objPresenters.FirstOrDefault();
+
+            }
+
+            @if (currentDate < dayOne.Date)
+            {
+                var presenter = Model.objPresenters.FirstOrDefault();
+
+                <div class="row">
+                    <img class="purple-dot no-spacing" src="~/Assets/SVG/purple dot.svg" />
+                    <h1 class="no-spacing">First on stage</h1>
+                </div>
+
+                <div class="center">
+                    <div class="presentation-info">
+                        <h1 class="medium-heading no-spacing">@presenter.PresenterTitle with @presenter.PresenterName</h1>
+                        <h2 class="regular-heading no-spacing">@presenter.PresenterDescription</h2>
+                        <p class="sub-text no-spacing">Go to stage @presenter.PresentationStage</p>
+                    </div>
+
+                    <div>
+                        <img class="image" src="@presenter.PresenterImageURL" />
+                    </div>
+                </div>
+
+            }
+            else if(currentDate.Date == dayOne.Date || currentDate.Date == dayTwo.Date)
+            {
+                <div class="row">
+                    <img class="purple-dot no-spacing" src="~/Assets/SVG/purple dot.svg" />
+                    <h1 class="no-spacing">Live Now</h1>
+                </div>
+
+                <div class="center">
+                    <div class="presentation-info">
+                        <h1 class="medium-heading no-spacing">@currentPresenter.PresenterTitle with @currentPresenter.PresenterName</h1>
+                        <h2 class="regular-heading no-spacing">@currentPresenter.PresenterDescription</h2>
+                        <p class="sub-text no-spacing">Go to stage @currentPresenter.PresentationStage</p>
+                    </div>
+
+                    <div>
+                        <img class="image" src="@currentPresenter.PresenterImageURL" />
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="thank-you row">
+                    <img class="purple-dot no-spacing" src="~/Assets/SVG/purple dot.svg" />
+                    <h1 class="no-spacing">And...we're done</h1>
+                </div>
+
+                <img class="image" src="~/Images/thank-you-poster.png" />
+
+            }
+
+        </div>
+
+        <div class="side-info">
+
+            <div class="upcoming-sessions">
+                <div class="row-space-between side-title">
+                    @if (currentDate.Date <= dayOne.Date)
+                    {
+                        <h3>Upcoming sessions</h3>
+                    }
+                    else if (currentDate.Date == dayTwo.Date)
+                    {
+                        <h3>Yesterday sessions</h3>
+                    }
+                    else
+                    {
+                        <h3>Speaker recap</h3>
+                    }
+                    <a class="more-btn" asp-area="" asp-controller="Home" asp-action="Upcoming">More</a>
+                </div>
+
+
+                @foreach (var presenter in Model.objPresenters.Take(3))
+                {
+                    <div class="sessions">
+                        <h4 class="no-spacing">@presenter.PresenterTitle with @presenter.PresenterName</h4>
+                        <p class="no-spacing">Stage @presenter.PresentationStage at @presenter.PresentationTime</p>
+                    </div>
+                }
+
+            </div>
+            <hr>
+            
+            <div class="reviews">
+                <div class="row-space-between side-title">
+                    <h3>Reviews</h3>
+                    <a class="more-btn" asp-area="" asp-controller="Home" asp-action="Reviews">More</a>
+                </div>
+
+                @foreach(var review in Model.objReviewsList)
+                {
+                    <div class="sessions">
+                        <h4 class="no-spacing">@review.ReviewerName</h4>
+                        <p class="no-spacing">@((review.ReviewMessage.Length > 20) ? review.ReviewMessage.Substring(0, 25) + "..." : review.ReviewMessage)</p>
+                    </div>
+                }
+
+            </div>
+        </div>
+
+    </div>
+
+    @if (currentDate.Date < dayOne.Date)
+    {
+        <div class="launch-time">
+
+            <div>
+                <p id="days">00</p>
+                <span>Days</span>
+            </div>
+
+            <div>
+                <p id="hours">00</p>
+                <span>Hours</span>
+            </div>
+
+            <div>
+                <p id="minutes">00</p>
+                <span>Minutes</span>
+            </div>
+
+            <div>
+                <p id="seconds">00</p>
+                <span>Seconds</span>
+            </div>
+
+        </div>
+    } else if(currentDate.Date > dayTwo.Date)
+    {
+        <div class="next-time">
+            Coming back soon!!
+        </div>
+    }
+
+
+    <script>
+
+        var countDownDate = new Date("Nov 4, 2023 00:00:00").getTime();
+        var x = setInterval(function() {
+            var now = new Date().getTime();
+            var distance = countDownDate - now;
+
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerHTML = days;
+            document.getElementById("hours").innerHTML = hours;
+            document.getElementById("minutes").innerHTML = minutes;
+            document.getElementById("seconds").innerHTML = seconds;
+
+        }, 1000)
+
+    </script>
+</body>
+</html>
+

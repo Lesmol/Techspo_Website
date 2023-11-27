@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My MVC App</title>
+    <link rel="stylesheet" href="~/css/registration.css" asp-append-version="true" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+</head>
+<body>
+    
+    <div class="container">
+
+        <h1>Registration Successful</h1>
+
+        <p>Download your ticket. You will need it to enter the event venue</p>
+
+        @if(Model == "1")
+        {
+            <button onclick="openPdf1InNewTab()">Open Ticket</button>
+
+
+        } else if (Model == "2")
+        {
+            <button onclick="openPdf2InNewTab()">Open Ticket</button>
+        } else
+        {
+            <button onclick="openPdf3InNewTab()">Open Ticket</button>
+        }
+
+    </div>
+
+    <script>
+        function openPdf1InNewTab() {
+            var pdfUrl = "@Url.Content("~/Assets/PDF/You and 5 voucher.pdf")";
+            window.open(pdfUrl, "_blank");
+        }
+
+        function openPdf2InNewTab() {
+            var pdfUrl = "@Url.Content("~/Assets/PDF/Weekend Expo.pdf")";
+            window.open(pdfUrl, "_blank");
+        }
+
+        function openPdf3InNewTab() {
+            var pdfUrl = "@Url.Content("~/Assets/PDF/One Man Army.pdf")";
+            window.open(pdfUrl, "_blank");
+        }
+    </script>
+</body>
+</html>
+

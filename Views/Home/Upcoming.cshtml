@@ -1,0 +1,200 @@
+﻿@using System.Collections.Generic
+@model IEnumerable<Presenters>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My MVC App</title>
+    <link rel="stylesheet" href="~/css/upcoming.css" asp-append-version="true" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+</head>
+<body>
+    <div class="container">
+        <div class="live-today">
+        
+            @{
+                DateTime currentDate = DateTime.Now;
+                DateTime dayOne = new DateTime(2023, 11, 4);
+                DateTime dayTwo = new DateTime(2023, 11, 5);
+
+                if (currentDate.Date < dayOne.Date)
+                {
+                    <div class="row today-heading">
+                        <img class="star no-spacing" src="~/Assets/SVG/Star.svg" />
+                        <h1 class="no-spacing">04 November</h1>
+                    </div>
+                }
+                else if (currentDate.Date >= dayTwo.Date.AddDays(1))
+                {
+                    <div class="row today-heading">
+                        <img class="star no-spacing" src="~/Assets/SVG/Star.svg" />
+                        <h1 class="no-spacing">Recap</h1>
+                    </div>
+                }
+                else
+                {
+                    <div class="row today-heading">
+                        <img class="star no-spacing" src="~/Assets/SVG/Star.svg" />
+                        <h1 class="no-spacing">TODAY</h1>
+                    </div>
+                }
+
+                if (currentDate.Date <= dayOne.Date)
+                {
+                    <div class="center today-content-spacing">
+
+                        <div class="swiper mySwiper">
+                            <div class="swiper-wrapper">
+
+                                @foreach (var presenter in Model)
+                                {
+                                    if (presenter.PresentationDate.Date == dayOne.Date.Date)
+                                    {
+                                        <div class="swiper-slide">
+                                            <div class="presentation-info">
+                                                <h1 class="medium-heading no-spacing">@presenter.PresenterTitle with <span>@presenter.PresenterName.</span></h1>
+                                                <p class="sub-text no-spacing">At @presenter.PresentationTime on stage @presenter.PresentationStage</p>
+
+                                                <img class="image" src="@presenter.PresenterImageURL" />
+                                            </div>
+                                        </div>
+                                    }
+                                }
+
+                            </div>
+                            <div class="swiper-pagination"></div>
+                        </div>
+                    </div>
+                }
+
+                if (currentDate.Date == dayTwo.Date)
+                {
+                    <div class="center today-content-spacing">
+
+                        <div class="swiper mySwiper">
+                            <div class="swiper-wrapper">
+
+                                @foreach (var presenter in Model)
+                                {
+                                    if (presenter.PresentationDate == dayTwo.Date)
+                                    {
+                                        <div class="swiper-slide">
+                                            <div class="presentation-info">
+                                                <h1 class="medium-heading no-spacing">@presenter.PresenterTitle with <span>@presenter.PresenterName.</span></h1>
+                                                <p class="sub-text no-spacing">At @presenter.PresentationTime on stage @presenter.PresentationStage</p>
+
+                                                <img class="image" src="@presenter.PresenterImageURL" />
+                                            </div>
+                                        </div>
+                                    }
+                                }
+
+                            </div>
+                            <div class="swiper-pagination"></div>
+                        </div>
+                    </div>
+                }
+
+                if (currentDate.Date >= dayTwo.Date.AddDays(1))
+                {
+                    <div class="center today-content-spacing">
+
+                        <div class="swiper mySwiper">
+                            <div class="swiper-wrapper">
+
+                                @foreach (var presenter in Model)
+                                {
+                                    <div class="swiper-slide">
+                                        <div class="presentation-info">
+                                            <h1 class="medium-heading no-spacing">@presenter.PresenterTitle with <span>@presenter.PresenterName.</span></h1>
+                                            <p class="sub-text no-spacing">At @presenter.PresentationTime on stage @presenter.PresentationStage</p>
+
+                                            <img class="image" src="@presenter.PresenterImageURL" />
+                                        </div>
+                                    </div>
+                                }
+
+                            </div>
+                            <div class="swiper-pagination"></div>
+                        </div>
+                    </div>
+                }
+            }
+
+        </div>
+
+        @if (currentDate.Date <= dayOne.Date)
+        {
+            <div class="side-info">
+                <div class="upcoming-sessions">
+                    @if (currentDate.Date < dayOne.Date)
+                    {
+                        <div class="row-space-between side-title">
+                            <h3>05 November</h3>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="row-space-between side-title">
+                            <h3>Tomorrow</h3>
+                        </div>
+                    }
+
+                    @foreach (var presenter in Model)
+                    {
+                        if (presenter.PresentationDate.Date == dayTwo.Date)
+                        {
+                            <div class="sessions">
+                                <h4 class="no-spacing">@presenter.PresenterTitle with @presenter.PresenterName</h4>
+                                <p class="no-spacing">Stage @presenter.PresentationStage at @presenter.PresentationTime</p>
+                            </div>
+                        }
+                    }
+
+                </div>
+            </div>
+        }
+        else if(currentDate.Date == dayTwo.Date)
+        {
+            <div class="side-info">
+                <div class="upcoming-sessions">
+
+                    <div class="row-space-between side-title">
+                        <h3>Yesterday</h3>
+                    </div>
+
+                    @foreach (var presenter in Model)
+                    {
+                        if (presenter.PresentationDate.Date == dayOne.Date)
+                        {
+                            <div class="sessions">
+                                <h4 class="no-spacing">@presenter.PresenterTitle with @presenter.PresenterName</h4>
+                                <p class="no-spacing">Stage @presenter.PresentationStage at @presenter.PresentationTime</p>
+                            </div>
+                        }
+                    }
+
+                </div>
+            </div>
+        }
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            pagination: {
+                el: ".swiper-pagination",
+                dynamicBullets: true,
+            },
+        });
+    </script>
+</body>
+</html>
+

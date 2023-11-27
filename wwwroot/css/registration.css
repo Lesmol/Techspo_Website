@@ -1,0 +1,69 @@
+﻿:root {
+    --gray: #5E5E5E;
+    --purple: #6007D0;
+    --dark-purple: #43088F;
+    --light-purple: #9E54FA;
+    --light-background-purple: #EFE8FF;
+    --dark-text-purple: #210066;
+    --light-text-purple: #BA99FF;
+    --border-purple: #9F83DC;
+}
+
+main {
+    width: 100%;
+}
+
+body {
+    font-family: 'Inter';
+    color: var(--dark-text-purple);
+}
+
+.container img {
+    margin-top: 16vh;
+    width: 1000px;
+}
+
+h1 {
+    margin-bottom: 4vh;
+}
+
+button {
+    text-decoration: none;
+    margin-top: 2vh;
+    border: 1px solid var(--light-purple);
+    border-radius: 8px;
+    background-color: var(--dark-purple);
+    color: white;
+    font-size: 18px;
+    padding: 18px 36px;
+}
+
+.hollow-btn {
+    width: 100%;
+    max-width: 220px;
+    margin: 0 auto;
+    margin-top: 2vh;
+    display: block;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 18px;
+    padding: 18px 36px;
+    background-color: var(--light-background-purple);
+    color: var(--dark-text-purple);
+    border: 1px solid var(--border-purple);
+    transition: .15s ease
+}
+
+    .hollow-btn:hover {
+        background-color: var(--purple);
+        color: var(--light-background-purple);
+        border: 1px solid var(--purple);
+    }
+
+.container {
+    text-align: center;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    margin-top: 5vh;
+}

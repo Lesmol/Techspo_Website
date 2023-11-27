@@ -1,0 +1,167 @@
+﻿:root {
+    --gray: #5E5E5E;
+    --purple: #6007D0;
+    --dark-purple: #43088F;
+    --light-purple: #9E54FA;
+    --light-background-purple: #EFE8FF;
+    --dark-text-purple: #210066;
+    --light-text-purple: #BA99FF;
+    --border-purple: #9F83DC;
+}
+
+main {
+    width: 100%;
+}
+
+body {
+    font-family: 'Inter';
+    color: var(--dark-text-purple);
+}
+
+span {
+    display: block;
+}
+
+.original-price {
+    font-size: 28px;
+    font-weight: 300;
+    text-decoration: line-through;
+}
+
+.offer-price {
+    font-size: 34px;
+    font-weight: 700;
+}
+
+h1 {
+    font-weight: 500;
+    font-size: 36px;
+}
+
+p {
+    font-size: 16px;
+}
+
+.container {
+    width: 100%;
+    max-width: 1670px;
+    margin: 0 auto;
+    padding-top: 6vh;
+}
+
+.you-and-5, .you-and-5__1, .you-and-5__2, .early-bird, .weekend-xp {
+    position: relative;
+    margin: 0 auto;
+    max-width: 375px;
+    padding: 2%;
+    text-align: center;
+    border-left: solid 1px var(--dark-text-purple);
+    border-right: solid 1px var(--dark-text-purple);
+}
+
+.early-bird, .weekend-xp {
+    margin-top: 4vh;
+    border-radius: 4px;
+}
+
+.you-and-5__1, .you-and-5__2 {
+    display: none;
+}
+
+.you-and-5__1 img, .you-and-5__2 img {
+    position: absolute;
+    left: 85px;
+    top: -70px;
+    width: 260px;
+}
+
+.you-and-5 img {
+    position: absolute;
+    left: 20vw;
+    top: -50px;
+    width: 200px;
+}
+
+.select-btn {
+    position: absolute;
+    left: 115px;
+    border: 1px solid var(--dark-text-purple);
+    border-radius: 8px;
+    background-color: var(--light-text-purple);
+    color: var(--dark-text-purple);
+    font-size: 18px;
+    padding: 8px 26px;
+    text-decoration:none;
+    transition: .15s ease;
+}
+
+.select-btn:hover {
+    background-color: var(--light-purple);
+    color: white
+}
+
+.inactive-btn {
+    pointer-events: none;
+    border: none;
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+}
+
+
+@media (min-width: 950px) {
+    .select-btn {
+        position: absolute;
+        left: 125px;
+    }
+
+    .original-price {
+        font-size: 36px;
+    }
+
+    .offer-price {
+        font-size: 58px;
+    }
+
+    h1 {
+        font-size: 48px;
+    }
+
+    p {
+        font-size: 24px;
+    }
+
+    .column__row {
+        align-content: center;
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+
+    .you-and-5 {
+        display: none;
+    }
+
+    .you-and-5__1 {
+        position: relative;
+        display: block;
+        margin: 160px 31px;
+    }
+
+    .select-btn {
+        font-size: 28px;
+        padding: 16px 36px;
+    }
+}
+
+@media (min-width: 1429px) {
+    .you-and-5__1 {
+        display: none;
+    }
+
+    .you-and-5__2 {
+        position: relative;
+        display: block;
+        margin: 0 31px;
+    }
+}
