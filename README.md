@@ -20,3 +20,5 @@ FOR POTENTIAL ATTENDEES:
 The web app is also the registration point for people who want to attend the event. Potential attendees can register for the free event by picking a voucher they want, registering and downloading the ticket. When registering, their credentials are saved onto the database, in the case they forget to download their ticket, they will still be able to attend with their username and email.
 ***
 For the website demo, you can check out this [website](https://scented-anaconda-8cb.notion.site/Techspo-Site-726631614f8944d8b39c91bbe6fdb94a)
+
+[![My Skills](https://skillicons.dev/icons?i=dotnet,cs,azure,mysql,figma,html,css,js)](https://skillicons.dev)
